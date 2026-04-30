@@ -1,8 +1,21 @@
+import Link from "next/link";
+
 export default function Home() {
   return (
-    <main>
+    <main style={{ padding: "2rem", fontFamily: "Arial, sans-serif" }}>
       <h1>Campus Companion</h1>
-      <p>Welcome to the Campus Companion app</p>
+      <p>Welcome to the Campus Companion app.</p>
+
+      <nav aria-label="Main navigation">
+        <ul>
+          <li>
+            <Link href="/events">Campus Events</Link>
+          </li>
+          <li>
+            <Link href="/directory">Campus Directory</Link>
+          </li>
+        </ul>
+      </nav>
     </main>
-  )
+  );
 }
