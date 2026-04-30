@@ -4,7 +4,7 @@ export default function Home() {
   return (
     <main style={{ padding: "2rem", fontFamily: "Arial, sans-serif" }}>
       <h1>Campus Companion</h1>
-      <p>Welcome to the Campus Companion app.</p>
+      <p>Welcome to the Campus Companion app (updated).</p>
 
       <nav aria-label="Main navigation">
         <ul>
