@@ -87,15 +87,18 @@ export default function Events() {
               onClick={() => setSelectedCategory(category)}
               aria-pressed={selectedCategory === category}
               style={{
-                padding: "0.5rem 1rem",
-                border:
-                  selectedCategory === category
-                    ? "2px solid black"
-                    : "1px solid gray",
-                backgroundColor:
-                  selectedCategory === category ? "#e5e5e5" : "white",
-                cursor: "pointer",
-              }}
+  padding: "0.5rem 1rem",
+  border:
+    selectedCategory === category
+      ? "2px solid #1d4ed8"
+      : "1px solid #ccc",
+  backgroundColor:
+    selectedCategory === category ? "#1d4ed8" : "#e5e7eb",
+  color:
+    selectedCategory === category ? "white" : "#1f2937",
+  borderRadius: "8px",
+  cursor: "pointer",
+}}
             >
               {category}
             </button>
