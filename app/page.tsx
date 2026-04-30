@@ -14,6 +14,9 @@ export default function Home() {
           <li>
             <Link href="/directory">Campus Directory</Link>
           </li>
+          <li>
+  <Link href="/helpdesk">Helpdesk</Link>
+</li>
         </ul>
       </nav>
     </main>
