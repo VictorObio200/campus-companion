@@ -72,7 +72,7 @@ export default function Events() {
             marginTop: "0.5rem",
             padding: "0.5rem",
             width: "100%",
-            maxWidth: "400px",
+            maxWidth: "500px",
           }}
         />
       </section>
