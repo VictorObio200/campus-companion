@@ -46,6 +46,13 @@ export default function Events() {
     return matchesCategory && matchesSearch;
   });
 
+  const recommendedEvents =
+    selectedCategory === "All"
+      ? events.slice(0, 2)
+      : events
+          .filter((event) => event.category === selectedCategory)
+          .slice(0, 2);
+
   return (
     <main style={{ padding: "2rem", fontFamily: "Arial, sans-serif" }}>
       <h1>Campus Events</h1>
@@ -65,7 +72,7 @@ export default function Events() {
             marginTop: "0.5rem",
             padding: "0.5rem",
             width: "100%",
-            maxWidth: "500px",
+            maxWidth: "400px",
           }}
         />
       </section>
@@ -113,6 +120,22 @@ export default function Events() {
             ))}
           </ul>
         )}
+      </section>
+
+      <section aria-labelledby="recommendations-heading">
+        <h2 id="recommendations-heading">Recommended Events</h2>
+        <p>These events are recommended based on the category you selected.</p>
+
+        <ul>
+          {recommendedEvents.map((event, index) => (
+            <li key={index} style={{ marginBottom: "1rem" }}>
+              <h3>{event.title}</h3>
+              <p>Date: {event.date}</p>
+              <p>Location: {event.location}</p>
+              <p>Category: {event.category}</p>
+            </li>
+          ))}
+        </ul>
       </section>
     </main>
   );
