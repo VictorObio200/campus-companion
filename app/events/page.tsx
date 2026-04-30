@@ -33,15 +33,42 @@ const categories = ["All", "Sports", "Tech", "Music"];
 
 export default function Events() {
   const [selectedCategory, setSelectedCategory] = useState("All");
+  const [searchTerm, setSearchTerm] = useState("");
 
-  const filteredEvents =
-    selectedCategory === "All"
-      ? events
-      : events.filter((event) => event.category === selectedCategory);
+  const filteredEvents = events.filter((event) => {
+    const matchesCategory =
+      selectedCategory === "All" || event.category === selectedCategory;
+
+    const matchesSearch = event.title
+      .toLowerCase()
+      .includes(searchTerm.toLowerCase());
+
+    return matchesCategory && matchesSearch;
+  });
 
   return (
     <main style={{ padding: "2rem", fontFamily: "Arial, sans-serif" }}>
       <h1>Campus Events</h1>
+
+      <section aria-labelledby="search-heading">
+        <h2 id="search-heading">Search events</h2>
+
+        <label htmlFor="event-search">Search by event title</label>
+        <br />
+        <input
+          id="event-search"
+          type="text"
+          value={searchTerm}
+          onChange={(event) => setSearchTerm(event.target.value)}
+          placeholder="Search events..."
+          style={{
+            marginTop: "0.5rem",
+            padding: "0.5rem",
+            width: "100%",
+            maxWidth: "500px",
+          }}
+        />
+      </section>
 
       <section aria-labelledby="filter-heading">
         <h2 id="filter-heading">Filter events by category</h2>
@@ -51,6 +78,7 @@ export default function Events() {
             <button
               key={category}
               onClick={() => setSelectedCategory(category)}
+              aria-pressed={selectedCategory === category}
               style={{
                 padding: "0.5rem 1rem",
                 border:
@@ -69,18 +97,22 @@ export default function Events() {
       </section>
 
       <section aria-labelledby="events-heading">
-        <h2 id="events-heading">{selectedCategory} Events</h2>
+        <h2 id="events-heading">Matching Events</h2>
 
-        <ul>
-          {filteredEvents.map((event, index) => (
-            <li key={index} style={{ marginBottom: "1rem" }}>
-              <h3>{event.title}</h3>
-              <p>Date: {event.date}</p>
-              <p>Location: {event.location}</p>
-              <p>Category: {event.category}</p>
-            </li>
-          ))}
-        </ul>
+        {filteredEvents.length === 0 ? (
+          <p>No events found.</p>
+        ) : (
+          <ul>
+            {filteredEvents.map((event, index) => (
+              <li key={index} style={{ marginBottom: "1rem" }}>
+                <h3>{event.title}</h3>
+                <p>Date: {event.date}</p>
+                <p>Location: {event.location}</p>
+                <p>Category: {event.category}</p>
+              </li>
+            ))}
+          </ul>
+        )}
       </section>
     </main>
   );
