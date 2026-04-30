@@ -17,6 +17,9 @@ export default function Home() {
           <li>
   <Link href="/helpdesk">Helpdesk</Link>
 </li>
+<li>
+  <Link href="/reminders">Reminders</Link>
+</li>
         </ul>
       </nav>
     </main>
